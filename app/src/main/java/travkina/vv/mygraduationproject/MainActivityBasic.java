@@ -50,10 +50,10 @@ public class MainActivityBasic extends AppCompatActivity {
         d = (ToggleButton)findViewById(R.id.toggleButton3) ;
         // editText = (EditText) findViewById(R.id.editText2) ;
 
-        f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
+      //  f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
 // editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
-        file = f1.listFiles();
-        k = file.length;
+      //  file = f1.listFiles();
+       // k = file.length;
 
         button.setOnClickListener(listaner1);
 
@@ -81,27 +81,81 @@ public class MainActivityBasic extends AppCompatActivity {
                  file_for_d = new File(f1.getAbsolutePath()+"/"+p.getNameFile());
                  Toast.makeText(this, "2", Toast.LENGTH_LONG).show();
                  file_for_d.delete();
-               // m =  products.indexOf(p.getNameFile());
+
+              //  m =  products.indexOf(p.getNameFile());
                // Toast.makeText(this, m, Toast.LENGTH_LONG).show();
-              //  products.remove(m);
+             //  products.remove(m);
                // Toast.makeText(this, "tcnm", Toast.LENGTH_LONG).show();
                 //f1.getAbsolutePath()+
             }
         }
         Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+        zapolnenie();
        // Show_f();
     }
 
+public void zapolnenie(){
+    txt = t.isChecked();
+    jpg = j.isChecked();
+    doc = d.isChecked();
+    f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
+// editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
+    file = f1.listFiles();
+    k = file.length;
+    String str;
+    // editText.setText("");
+    Toast toast = Toast.makeText(getApplicationContext(),
+            "Прошол1!", Toast.LENGTH_SHORT);
+    toast.show();
+    products.clear();
+    if (txt) {
+        // действия если включена
+        for (int i = 0; i < k; i++) {
 
+            if (file[i].getName().contains("pdf")) {
+
+                str = file[i].getName();
+                products.add(new MyFile(str));
+                //  editText.append(file[i].getName() + "\n");
+            }
+        }
+    }
+    if (jpg) {
+        // действия если включена
+        for (int i = 0; i < k; i++) {
+
+            if (file[i].getName().contains("jpg")) {
+                products.add(new MyFile(file[i].getName()));
+                //  editText.append(file[i].getName() + "\n");
+            }
+        }
+    }
+    if (doc) {
+        // действия если включена
+        for (int i = 0; i < k; i++) {
+
+            if (file[i].getName().contains("doc")) {
+                products.add(new MyFile(file[i].getName()));
+                //editText.append(file[i].getName() + "\n");
+            }
+        }
+    }
+    Show_f();
+}
 
     class Listaner1 implements View.OnClickListener {
 
 
         @Override
         public void onClick(View v) {
-            txt = t.isChecked();
+            zapolnenie();
+        /*    txt = t.isChecked();
             jpg = j.isChecked();
             doc = d.isChecked();
+            f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
+// editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
+            file = f1.listFiles();
+            k = file.length;
             String str;
             // editText.setText("");
             Toast toast = Toast.makeText(getApplicationContext(),
@@ -146,6 +200,7 @@ public class MainActivityBasic extends AppCompatActivity {
 
 
             Show_f();
+            */
         }
 
 
