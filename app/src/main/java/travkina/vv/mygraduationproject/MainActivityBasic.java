@@ -21,7 +21,156 @@ import android.widget.ToggleButton;
 
 
 public class MainActivityBasic extends AppCompatActivity {
+    ArrayList<MyFile> products = new ArrayList<MyFile>();
+    BoxAdapter boxAdapter;
 
+    SimpleDateFormat sdf;
+    ToggleButton t;
+    ToggleButton j;
+    ToggleButton d;
+    // EditText editText;
+    Button button;
+    boolean txt,jpg,doc;
+    int k, m;
+    File[] file;
+    File f1;
+    File file_for_d;
+
+    /** Called when the activity is first created. */
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_basic);
+
+        button = (Button) findViewById(R.id.button_s);
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Listaner1 listaner1 = new Listaner1();
+        t = (ToggleButton)findViewById(R.id.toggleButton1) ;
+        j = (ToggleButton)findViewById(R.id.toggleButton2) ;
+        d = (ToggleButton)findViewById(R.id.toggleButton3) ;
+        // editText = (EditText) findViewById(R.id.editText2) ;
+
+        f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
+// editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
+        file = f1.listFiles();
+        k = file.length;
+
+        button.setOnClickListener(listaner1);
+
+        products.add(new MyFile("картошка"));
+        products.add(new MyFile("картошка2"));
+        products.add(new MyFile("картошка3"));
+        // создаем адаптер
+       // fillData();
+        boxAdapter = new BoxAdapter(this, products);
+
+        // настраиваем список
+        ListView lvMain = (ListView) findViewById(R.id.fileList);
+        lvMain.setAdapter(boxAdapter);
+    }
+
+
+
+    // выводим информацию о корзине
+    public void showResult(View v) {
+        String result = "Товары в корзине:";
+        for (MyFile p : boxAdapter.getBox()) {
+            if (p.flag) {
+                result += "\n" + p.getNameFile();
+                Toast.makeText(this, "1", Toast.LENGTH_LONG).show();
+                 file_for_d = new File(f1.getAbsolutePath()+"/"+p.getNameFile());
+                 Toast.makeText(this, "2", Toast.LENGTH_LONG).show();
+                 file_for_d.delete();
+               // m =  products.indexOf(p.getNameFile());
+               // Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+              //  products.remove(m);
+               // Toast.makeText(this, "tcnm", Toast.LENGTH_LONG).show();
+                //f1.getAbsolutePath()+
+            }
+        }
+        Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+       // Show_f();
+    }
+
+
+
+    class Listaner1 implements View.OnClickListener {
+
+
+        @Override
+        public void onClick(View v) {
+            txt = t.isChecked();
+            jpg = j.isChecked();
+            doc = d.isChecked();
+            String str;
+            // editText.setText("");
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Прошол1!", Toast.LENGTH_SHORT);
+            toast.show();
+            products.clear();
+            if (txt) {
+                // действия если включена
+                for (int i = 0; i < k; i++) {
+
+                    if (file[i].getName().contains("pdf")) {
+
+                        str = file[i].getName();
+                        products.add(new MyFile(str));
+                        //  editText.append(file[i].getName() + "\n");
+                    }
+                }
+            }
+
+
+            if (jpg) {
+                // действия если включена
+                for (int i = 0; i < k; i++) {
+
+                    if (file[i].getName().contains("jpg")) {
+                        products.add(new MyFile(file[i].getName()));
+                      //  editText.append(file[i].getName() + "\n");
+                    }
+                }
+            }
+            if (doc) {
+                // действия если включена
+                for (int i = 0; i < k; i++) {
+
+                    if (file[i].getName().contains("doc")) {
+                        products.add(new MyFile(file[i].getName()));
+                        //editText.append(file[i].getName() + "\n");
+                    }
+                }
+            }
+
+
+
+            Show_f();
+        }
+
+
+
+
+
+    }
+
+
+
+    public void Show_f(){
+        boxAdapter = new BoxAdapter(this, products);
+
+        // настраиваем список
+        ListView lvMain = (ListView) findViewById(R.id.fileList);
+        lvMain.setAdapter(boxAdapter);
+    }
+
+
+
+}
+
+
+
+/*
     SimpleDateFormat sdf;
     ToggleButton t;
     ToggleButton j;
@@ -120,9 +269,9 @@ public class MainActivityBasic extends AppCompatActivity {
                 }
             }
 
-*/
 
-            Show_f();
+
+        //    Show_f();
         }
 
 
@@ -142,3 +291,4 @@ public void Show_f(){
 
 
 }
+*/
