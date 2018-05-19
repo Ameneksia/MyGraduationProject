@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/f"
     >
 
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/txt"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,89 +18,94 @@
         android:layout_marginLeft="26dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="22dp"
-        android:text="ToggleButton" />
+        android:textOff="txt"
+        android:textOn="txt" />
 
     <ToggleButton
-        android:id="@+id/toggleButton5"
+        android:id="@+id/doc"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/toggleButton"
+        android:layout_alignTop="@+id/txt"
         android:layout_centerHorizontal="true"
-        android:text="ToggleButton" />
+        android:textOff="doc"
+        android:textOn="doc" />
 
     <ToggleButton
-        android:id="@+id/toggleButton6"
+        android:id="@+id/pdf"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/toggleButton5"
+        android:layout_alignTop="@+id/doc"
         android:layout_marginEnd="26dp"
         android:layout_marginRight="26dp"
-        android:text="ToggleButton" />
+        android:textOff="pdf"
+        android:textOn="pdf" />
 
     <ToggleButton
-        android:id="@+id/toggleButton7"
+        android:id="@+id/avi"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/toggleButton"
-        android:layout_alignStart="@+id/toggleButton"
-        android:layout_below="@+id/toggleButton"
+        android:layout_alignLeft="@+id/txt"
+        android:layout_alignStart="@+id/txt"
+        android:layout_below="@+id/txt"
         android:layout_marginTop="15dp"
-        android:text="ToggleButton" />
+        android:textOff="avi"
+        android:textOn="avi" />
 
     <ToggleButton
-        android:id="@+id/toggleButton8"
+        android:id="@+id/mp3"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/toggleButton7"
-        android:layout_alignBottom="@+id/toggleButton7"
-        android:layout_alignLeft="@+id/toggleButton5"
-        android:layout_alignStart="@+id/toggleButton5"
-        android:text="ToggleButton" />
+        android:layout_alignBaseline="@+id/avi"
+        android:layout_alignBottom="@+id/avi"
+        android:layout_alignLeft="@+id/doc"
+        android:layout_alignStart="@+id/doc"
+        android:textOff="mp3"
+        android:textOn="mp3" />
 
     <ToggleButton
-        android:id="@+id/toggleButton9"
+        android:id="@+id/mp4"
         android:background="@drawable/toggle_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/toggleButton6"
-        android:layout_alignRight="@+id/toggleButton6"
-        android:layout_alignTop="@+id/toggleButton8"
-        android:text="ToggleButton" />
+        android:layout_alignEnd="@+id/pdf"
+        android:layout_alignRight="@+id/pdf"
+        android:layout_alignTop="@+id/mp3"
+        android:textOff="mp4"
+        android:textOn="mp4" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toggleButton7"
-        android:layout_marginTop="14dp"
-        android:layout_toEndOf="@+id/toggleButton7"
-        android:layout_toLeftOf="@+id/toggleButton9"
-        android:layout_toRightOf="@+id/toggleButton7"
-        android:layout_toStartOf="@+id/toggleButton9"
-        android:text="Button" />
+        android:layout_below="@+id/avi"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/mp3"
+        android:layout_toStartOf="@+id/mp3"
+        android:background="@drawable/s2" />
+
+    <Button
+        android:id="@+id/button_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_above="@+id/fileList"
+        android:layout_toEndOf="@+id/mp3"
+        android:layout_toRightOf="@+id/mp3"
+        android:background="@drawable/d4"
+        android:onClick="showResult" />
 
     <ListView
         android:id="@+id/fileList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/button"></ListView>
+        android:layout_below="@+id/button_s"></ListView>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="Button" />
 </RelativeLayout>

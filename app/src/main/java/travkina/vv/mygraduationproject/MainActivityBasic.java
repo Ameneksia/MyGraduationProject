@@ -1,5 +1,6 @@
 package travkina.vv.mygraduationproject;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,9 +26,7 @@ public class MainActivityBasic extends AppCompatActivity {
     BoxAdapter boxAdapter;
 
     SimpleDateFormat sdf;
-    ToggleButton t;
-    ToggleButton j;
-    ToggleButton d;
+    ToggleButton t,d,p,a,m3,m4;
     // EditText editText;
     Button button;
     boolean txt,jpg,doc;
@@ -39,15 +38,21 @@ public class MainActivityBasic extends AppCompatActivity {
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_basic);
+        setContentView(R.layout.layout);
+//-------------------------------------------------------
+        //Создаем новый поток:
 
+//--------------------------------------------------------------------------------------------------------
         button = (Button) findViewById(R.id.button_s);
         sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         Listaner1 listaner1 = new Listaner1();
-        t = (ToggleButton)findViewById(R.id.toggleButton1) ;
-        j = (ToggleButton)findViewById(R.id.toggleButton2) ;
-        d = (ToggleButton)findViewById(R.id.toggleButton3) ;
+        t = (ToggleButton)findViewById(R.id.txt) ;
+        d = (ToggleButton)findViewById(R.id.doc) ;
+        p = (ToggleButton)findViewById(R.id.pdf) ;
+        a = (ToggleButton)findViewById(R.id.avi) ;
+        m3 = (ToggleButton)findViewById(R.id.mp3) ;
+        m4 = (ToggleButton)findViewById(R.id.mp4) ;
         // editText = (EditText) findViewById(R.id.editText2) ;
 
       //  f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
@@ -57,9 +62,6 @@ public class MainActivityBasic extends AppCompatActivity {
 
         button.setOnClickListener(listaner1);
 
-        products.add(new MyFile("картошка"));
-        products.add(new MyFile("картошка2"));
-        products.add(new MyFile("картошка3"));
         // создаем адаптер
        // fillData();
         boxAdapter = new BoxAdapter(this, products);
@@ -95,9 +97,7 @@ public class MainActivityBasic extends AppCompatActivity {
     }
 
 public void zapolnenie(){
-    txt = t.isChecked();
-    jpg = j.isChecked();
-    doc = d.isChecked();
+
     f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
 // editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
     file = f1.listFiles();
@@ -108,17 +108,29 @@ public void zapolnenie(){
             "Прошол1!", Toast.LENGTH_SHORT);
     toast.show();
     products.clear();
-    if (txt) {
+    if (t.isChecked()) {
         // действия если включена
-    search("pdf");
+    search("txt");
     }
-    if (jpg) {
-        // действия если включена
-        search("jpg");
-    }
-    if (doc) {
+    if (d.isChecked()) {
         // действия если включена
         search("doc");
+    }
+    if (p.isChecked()) {
+        // действия если включена
+        search("pdf");
+    }
+    if (a.isChecked()) {
+        // действия если включена
+        search("avi");
+    }
+    if (m3.isChecked()) {
+        // действия если включена
+        search("mp3");
+    }
+    if (m4.isChecked()) {
+        // действия если включена
+        search("mp4");
     }
     Show_f();
 }
@@ -166,126 +178,3 @@ void search(String format){
 }
 
 
-
-/*
-    SimpleDateFormat sdf;
-    ToggleButton t;
-    ToggleButton j;
-    ToggleButton d;
-   // EditText editText;
-    Button button;
-    boolean txt,jpg,doc;
-    int k;
-    File[] file;
-
-    ArrayList<MyFile> products = new ArrayList();
-
-    ListView myFileList;
-    FileAdapter adapter;
-    ToggleButton toogleButton;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_basic);
-
-        button = (Button) findViewById(R.id.button_s);
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-        Listaner1 listaner1 = new Listaner1();
-        t = (ToggleButton)findViewById(R.id.toggleButton1) ;
-        j = (ToggleButton)findViewById(R.id.toggleButton2) ;
-        d = (ToggleButton)findViewById(R.id.toggleButton3) ;
-       // editText = (EditText) findViewById(R.id.editText2) ;
-
-        File f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
-// editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
-        file = f1.listFiles();
-        k = file.length;
-
-
-     //   products.add(new MyFile("Картофель"));
-      //  products.add(new MyFile("Чай"));
-
-       // myFileList = (ListView) findViewById(R.id.fileList);
-       //  adapter = new FileAdapter(this, R.layout.list_item, products);
-       // myFileList.setAdapter(adapter);
-      //  Show_f();
-
-        button.setOnClickListener(listaner1);
-
-
-
-    }
-
-    class Listaner1 implements View.OnClickListener {
-
-
-        @Override
-        public void onClick(View v) {
-            txt = t.isChecked();
-            jpg = j.isChecked();
-            doc = d.isChecked();
-            String str;
-           // editText.setText("");
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Прошол1!", Toast.LENGTH_SHORT);
-            toast.show();
-
-            if (txt) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
-
-                    if (file[i].getName().contains("txt")) {
-
-                        str = file[i].getName();
-                        products.add(new MyFile(str));
-                      //  editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-
-            /*
-            if (jpg) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
-
-                    if (file[i].getName().contains("jpg")) {
-                        products.add(new MyFile(file[i].getName()));
-                      //  editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-            if (doc) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
-
-                    if (file[i].getName().contains("doc")) {
-                        products.add(new MyFile(file[i].getName()));
-                        //editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-
-
-
-        //    Show_f();
-        }
-
-
-
-
-
-    }
-
-public void Show_f(){
-    myFileList = (ListView) findViewById(R.id.fileList);
-    adapter = new FileAdapter(this, R.layout.list_item, products);
-     myFileList.setAdapter(adapter);
-}
-
-
-
-
-
-}
-*/
