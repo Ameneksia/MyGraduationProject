@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".SecondActivity"
-            android:label="Splash Screen">
+            android:label="Folder Cleaner">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
