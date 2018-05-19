@@ -63,7 +63,7 @@ public class BoxAdapter extends BaseAdapter {
         // пишем позицию
         cbBuy.setTag(position);
         // заполняем данными из товаров: в корзине или нет
-        cbBuy.setChecked(p.flag);
+        cbBuy.setChecked(p.isFlag());
         return view;
     }
 
@@ -77,7 +77,7 @@ public class BoxAdapter extends BaseAdapter {
         ArrayList<MyFile> box = new ArrayList<MyFile>();
         for (MyFile p : objects) {
             // если в корзине
-            if (p.flag)
+            if (p.isFlag())
                 box.add(p);
         }
         return box;
@@ -88,7 +88,7 @@ public class BoxAdapter extends BaseAdapter {
         public void onCheckedChanged(CompoundButton buttonView,
                                      boolean isChecked) {
             // меняем данные товара (в корзине или нет)
-            getProduct((Integer) buttonView.getTag()).flag = isChecked;
+            getProduct((Integer) buttonView.getTag()).setFlag(isChecked);
         }
     };
 }

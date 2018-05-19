@@ -60,7 +60,7 @@ public class MainActivityBasic extends AppCompatActivity {
     public void showResult(View v) {
         String result = "Удалены: ";
         for (MyFile p : boxAdapter.getBox()) {
-            if (p.flag) {
+            if (p.isFlag()) {
                 result += "\n" + p.getNameFile();
 
                  file_for_d = new File(f1.getAbsolutePath()+"/"+p.getNameFile());

@@ -5,7 +5,7 @@ package travkina.vv.mygraduationproject;
 public class MyFile {
 
     private String nameFile;
-     boolean flag;
+    private boolean flag;
 
     MyFile(String name){
         this.nameFile = name;
@@ -20,7 +20,11 @@ public class MyFile {
         this.nameFile = nameFile;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
 
-
-
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
 }
