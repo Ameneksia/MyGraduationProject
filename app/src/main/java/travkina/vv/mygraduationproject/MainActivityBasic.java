@@ -102,7 +102,7 @@ public void zapolnenie(){
 // editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
     file = f1.listFiles();
     k = file.length;
-    String str;
+    //String str;
     // editText.setText("");
     Toast toast = Toast.makeText(getApplicationContext(),
             "Прошол1!", Toast.LENGTH_SHORT);
@@ -110,37 +110,32 @@ public void zapolnenie(){
     products.clear();
     if (txt) {
         // действия если включена
-        for (int i = 0; i < k; i++) {
-
-            if (file[i].getName().contains("pdf")) {
-
-                str = file[i].getName();
-                products.add(new MyFile(str));
-                //  editText.append(file[i].getName() + "\n");
-            }
-        }
+    search("pdf");
     }
     if (jpg) {
         // действия если включена
-        for (int i = 0; i < k; i++) {
-
-            if (file[i].getName().contains("jpg")) {
-                products.add(new MyFile(file[i].getName()));
-                //  editText.append(file[i].getName() + "\n");
-            }
-        }
+        search("jpg");
     }
     if (doc) {
         // действия если включена
-        for (int i = 0; i < k; i++) {
-
-            if (file[i].getName().contains("doc")) {
-                products.add(new MyFile(file[i].getName()));
-                //editText.append(file[i].getName() + "\n");
-            }
-        }
+        search("doc");
     }
     Show_f();
+}
+
+
+void search(String format){
+    String str;
+    for (int i = 0; i < k; i++) {
+
+        if (file[i].getName().contains(format)) {
+
+            str = file[i].getName();
+            products.add(new MyFile(str));
+            //  editText.append(file[i].getName() + "\n");
+        }
+    }
+
 }
 
     class Listaner1 implements View.OnClickListener {
@@ -149,61 +144,8 @@ public void zapolnenie(){
         @Override
         public void onClick(View v) {
             zapolnenie();
-        /*    txt = t.isChecked();
-            jpg = j.isChecked();
-            doc = d.isChecked();
-            f1 = new File((Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())); // получаем путь
-// editText.append(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString());
-            file = f1.listFiles();
-            k = file.length;
-            String str;
-            // editText.setText("");
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Прошол1!", Toast.LENGTH_SHORT);
-            toast.show();
-            products.clear();
-            if (txt) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
 
-                    if (file[i].getName().contains("pdf")) {
-
-                        str = file[i].getName();
-                        products.add(new MyFile(str));
-                        //  editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-
-
-            if (jpg) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
-
-                    if (file[i].getName().contains("jpg")) {
-                        products.add(new MyFile(file[i].getName()));
-                      //  editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-            if (doc) {
-                // действия если включена
-                for (int i = 0; i < k; i++) {
-
-                    if (file[i].getName().contains("doc")) {
-                        products.add(new MyFile(file[i].getName()));
-                        //editText.append(file[i].getName() + "\n");
-                    }
-                }
-            }
-
-
-
-            Show_f();
-            */
         }
-
-
 
 
 
