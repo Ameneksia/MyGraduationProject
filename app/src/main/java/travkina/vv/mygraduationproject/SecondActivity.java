@@ -16,9 +16,8 @@ public class SecondActivity extends AppCompatActivity {
             {
                 try
                 {
-                    //Целое значение время отображения картинки:
                     int SplashTimer = 0;
-                    //Запускаем цикл длиной в 3 секунды:
+
                     while(SplashTimer < 1000) {
                         sleep(100);
                         SplashTimer = SplashTimer +100;
@@ -28,7 +27,7 @@ public class SecondActivity extends AppCompatActivity {
                 catch (InterruptedException e) {
                     e.printStackTrace(); }
                 finally {
-                    //Закрываем activity:
+
                     finish();
                 }
             }

@@ -53,8 +53,7 @@ public class BoxAdapter extends BaseAdapter {
 
         MyFile p = getProduct(position);
 
-        // заполняем View в пункте списка данными из товаров: наименование, цена
-        // и картинка
+        // заполняем View в пункте списка данными
         ((TextView) view.findViewById(R.id.nameView)).setText(p.getNameFile());
 
 
